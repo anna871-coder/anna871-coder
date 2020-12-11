@@ -39,6 +39,9 @@ body {
 .divPicture img.clicked{
 	opacity: 0.5;
 }
+.divPicture:hover {
+	cursor: pointer;
+}
 
 .divPicture img {
 	width: 100%;
@@ -83,4 +86,8 @@ button {
 button:hover {
 	color: rgb(28, 109, 8);
 	background: rgb(29, 29, 29);
+}
+
+.pointed {
+	pointer-events: none;
 }

@@ -4,9 +4,9 @@ function initGame() {
     let defaultNumber = 6;
     //TODO ne mindig ugyanúgy rakja le a képet
     //Ha beletesszük egy tömbbe, hogy beforeend és afterbegin, akkor a tömbből random tudunk választani egyet. (Hol az elejére, hol a végére teszi)
-
+        //Létrehozom a tömböt
     const pictureNumbers = [0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5];
-
+        //Megkeverem a tömb elemeit:
     const shuffleArray = pictureNumbers => {
         for (let index = pictureNumbers.length - 1; index > 0; index--) {
             const j = Math.floor(Math.random() * (index + 1));
@@ -71,22 +71,27 @@ function initGame() {
 
     function pictureClick(e) {
 
-        //0. Rátesszük a show class nevet.
+        //0. Rátesszük a show-t és a pointed-et arra, amire kattintunk.
 
         e.target.classList.add("show");
+        e.target.parentElement.classList.add("pointed")
         //1. Mielőtt rátesszük a clicked class-t , megnézzük, hogy van-e már clicked class nevű elemünk,
         if (box.querySelector(".clicked")) {
             //2. Ha van, akkor összehasonlítjuk az e.target és a clicked class nevű elem src-jét. 
+            
             if (e.target.getAttribute("src") === box.querySelector(".clicked").getAttribute("src")) {
                 //4. Ha egyenlőek, akkor rátesszük a show class-t az e.target-re is, majd levesszük a clicked class nevet az előzőről
                 e.target.classList.add("show1");
                 box.querySelector(".clicked").classList.add("show1")
+                e.target.parentElement.classList.remove("pointed")
+                box.querySelector(".clicked").parentElement.classList.remove("pointed")
             } else {
                 //3. Ha nem egyenlőek, akkor töröljük az összes show class-t az elemekről.
                 let showCards = box.querySelectorAll(".show");
                 for (let index = 0; index < showCards.length; index++) {
-                    setTimeout(() => { showCards[index].classList.remove("show") }, 1000);
-                }
+                    setTimeout(() => { showCards[index].classList.remove("show"), showCards[index].parentElement.classList.remove("pointed")}, 1000);
+                };
+               
 
             }
             box.querySelector(".clicked").classList.remove("clicked");
@@ -95,6 +100,7 @@ function initGame() {
         } else {
             //5. Ha nincsen clicked class nevű elemünk, akkor rátesszük a clicked-et az e.targetre
             e.target.classList.add("clicked");
+            
         }
 
 
