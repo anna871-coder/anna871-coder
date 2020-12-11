@@ -98,7 +98,6 @@ function initGame() {
                
 
             }
-            showCards.parentElement.classList.remove("pointed");
             box.querySelector(".clicked").classList.remove("clicked");
             e.target.parentElement.classList.remove("pointed");
 
