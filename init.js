@@ -94,7 +94,7 @@ function initGame() {
                 for (let index = 0; index < showCards.length; index++) {
                     showCards[index].parentElement.classList.remove("pointed");
                     box.querySelector(".clicked").classList.remove("pointed");
-                    setTimeout(() => { showCards[index].classList.remove("show")}, 1000);
+                    setTimeout(() => { showCards[index].classList.remove("show")}, 300);
                 };
                
 
