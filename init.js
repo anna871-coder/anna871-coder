@@ -94,13 +94,15 @@ function initGame() {
                 for (let index = 0; index < showCards.length; index++) {
                     showCards[index].parentElement.classList.remove("pointed");
                     box.querySelector(".clicked").classList.remove("pointed");
-                    setTimeout(() => { showCards[index].classList.remove("show")}, 300);
+                    setTimeout(() => { showCards[index].classList.remove("show")}, 800);
                 };
+                showCards
                
 
             }
             box.querySelector(".clicked").classList.remove("clicked");
-
+            e.target.parentElement.classList.remove("pointed");
+            box.querySelector(".clicked").parentElement.classList.remove("pointed");
 
         } else {
             //5. Ha nincsen clicked class nevű elemünk, akkor rátesszük a clicked-et az e.targetre
