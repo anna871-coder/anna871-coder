@@ -4,9 +4,9 @@ function initGame() {
     let defaultNumber = 6;
     //TODO ne mindig ugyanúgy rakja le a képet
     //Ha beletesszük egy tömbbe, hogy beforeend és afterbegin, akkor a tömbből random tudunk választani egyet. (Hol az elejére, hol a végére teszi)
-        //Létrehozom a tömböt
+    //Létrehozom a tömböt
     const pictureNumbers = [0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5];
-        //Megkeverem a tömb elemeit:
+    //Megkeverem a tömb elemeit:
     const shuffleArray = pictureNumbers => {
         for (let index = pictureNumbers.length - 1; index > 0; index--) {
             const j = Math.floor(Math.random() * (index + 1));
@@ -27,7 +27,7 @@ function initGame() {
 
     for (let index = 0; index < 1; index++) {
         console.log(shuffleArray(pictureNumbers));
-             box.insertAdjacentHTML(random, `
+        box.insertAdjacentHTML(random, `
          <div class="divPicture"><img src="./img/mongoose${pictureNumbers[0]}.png" alt=""></div>
         `);
         box.insertAdjacentHTML(random, `
@@ -78,7 +78,7 @@ function initGame() {
         //1. Mielőtt rátesszük a clicked class-t , megnézzük, hogy van-e már clicked class nevű elemünk,
         if (box.querySelector(".clicked")) {
             //2. Ha van, akkor összehasonlítjuk az e.target és a clicked class nevű elem src-jét. 
-            
+
             if (e.target.getAttribute("src") === box.querySelector(".clicked").getAttribute("src")) {
                 //4. Ha egyenlőek, akkor rátesszük a show1-t az e.target-re és a clicked-re is, més hozzájuk adjuk a pointed-et
                 e.target.classList.add("show1");
@@ -87,25 +87,28 @@ function initGame() {
                 e.target.parentElement.classList.add("pointed1");
             } else {
                 //3. Ha nem egyenlőek, akkor töröljük az összes show class-t az elemekről.
-                
+
                 let showCards = box.querySelectorAll(".show");
                 for (let index = 0; index < showCards.length; index++) {
                     showCards[index].parentElement.classList.remove("pointed");
-                    box.querySelector(".clicked").classList.remove("pointed");
-                    e.target.parentElement.classList.remove("pointed");
-                    setTimeout(() => { showCards[index].classList.remove("show")}, 800);
-                };
-               
 
+                    e.target.parentElement.classList.remove("pointed");
+                    setTimeout(() => { showCards[index].classList.remove("show") }, 800);
+                }
+                let pointedCards = document.querySelectorAll(".clicked");
+                for (let index = 0; index < pointedCards.length; index++) {
+                    pointedCards[index].parentElement.classList.remove("pointed");
+                    console.log(pointedCards);
+                };
             }
             box.querySelector(".clicked").classList.remove("clicked");
             e.target.parentElement.classList.remove("pointed");
 
         } else {
             //5. Ha nincsen clicked class nevű elemünk, akkor rátesszük a clicked-et az e.targetre
-      
+
             e.target.classList.add("clicked");
-            
+
         }
 
 
