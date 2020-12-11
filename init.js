@@ -74,21 +74,23 @@ function initGame() {
         //0. Rátesszük a show-t és a pointed-et arra, amire kattintunk.
 
         e.target.classList.add("show");
-        e.target.parentElement.classList.add("pointed")
+        e.target.parentElement.classList.add("pointed");
         //1. Mielőtt rátesszük a clicked class-t , megnézzük, hogy van-e már clicked class nevű elemünk,
         if (box.querySelector(".clicked")) {
             //2. Ha van, akkor összehasonlítjuk az e.target és a clicked class nevű elem src-jét. 
             
             if (e.target.getAttribute("src") === box.querySelector(".clicked").getAttribute("src")) {
-                //4. Ha egyenlőek, akkor rátesszük a show class-t az e.target-re is, majd levesszük a clicked class nevet az előzőről
+                //4. Ha egyenlőek, akkor rátesszük a show1-t az e.target-re és a clicked-re is, més hozzájuk adjuk a pointed-et
                 e.target.classList.add("show1");
-                box.querySelector(".clicked").classList.add("show1")
-                box.querySelector(".clicked").classList.add("pointed")
-                e.target.parentElement.classList.add("pointed")
+                box.querySelector(".clicked").classList.add("show1");
+                box.querySelector(".clicked").parentElement.classList.add("pointed1");
+                e.target.parentElement.classList.add("pointed1");
             } else {
                 //3. Ha nem egyenlőek, akkor töröljük az összes show class-t az elemekről.
+                box.querySelector(".clicked").parentElement.classList.add("pointed");
+                e.target.parentElement.classList.add("pointed");
+                
                 let showCards = box.querySelectorAll(".show");
-               
                 for (let index = 0; index < showCards.length; index++) {
                     showCards[index].parentElement.classList.remove("pointed");
                     box.querySelector(".clicked").classList.remove("pointed");
