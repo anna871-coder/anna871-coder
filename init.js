@@ -87,25 +87,24 @@ function initGame() {
                 e.target.parentElement.classList.add("pointed1");
             } else {
                 //3. Ha nem egyenlőek, akkor töröljük az összes show class-t az elemekről.
-                box.querySelector(".clicked").parentElement.classList.add("pointed");
-                e.target.parentElement.classList.add("pointed");
                 
                 let showCards = box.querySelectorAll(".show");
                 for (let index = 0; index < showCards.length; index++) {
                     showCards[index].parentElement.classList.remove("pointed");
                     box.querySelector(".clicked").classList.remove("pointed");
+                    e.target.parentElement.classList.remove("pointed");
                     setTimeout(() => { showCards[index].classList.remove("show")}, 800);
                 };
-                showCards
                
 
             }
+            showCards.parentElement.classList.remove("pointed");
             box.querySelector(".clicked").classList.remove("clicked");
             e.target.parentElement.classList.remove("pointed");
-            box.querySelector(".clicked").parentElement.classList.remove("pointed");
 
         } else {
             //5. Ha nincsen clicked class nevű elemünk, akkor rátesszük a clicked-et az e.targetre
+      
             e.target.classList.add("clicked");
             
         }
